@@ -1,0 +1,42 @@
+<!--
+    Auto-generated test-site
+-->
+<html>
+<head>
+<title>Use-After-Free Fig.2 - UAF</title>
+</head>
+   <script>
+	
+        function startExploit()
+        {
+           if(vulnPlugin2.valid){
+           
+			 vulnPlugin2.InitRed(1,0x31333331);  // INIT RED
+             var a=vulnPlugin2.CallRed()         // CALL RED
+             alert(a);
+			 vulnPlugin2.FreeRed();              // FREE RED
+			 vulnPlugin2.InitGreen(2,0x31333331); //INIT GREEN
+			 		 
+			 //////
+			 alert('Ready?');
+			 var a=vulnPlugin2.CallRed(); // CALL RED ?????
+			 
+			alert(a);
+			 
+            } else {
+                alert("Plugin is not working :(");
+            }
+        }
+	
+</script>
+<body onload="">
+<div id="log"></div>
+<object id="vulnPlugin2" type="application/x-exploitme" width="300" height="300">
+</object>
+
+<br />
+    
+<a href="#" onclick="javascript:startExploit()">Click me!</a> <br />
+
+</body>
+</html>

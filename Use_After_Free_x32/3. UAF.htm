@@ -1,0 +1,43 @@
+<!--
+    Auto-generated test-site
+-->
+<html>
+<head>
+<title>Use-After-Free Fig.4 - Crash?</title>
+</head>
+   <script>
+	
+        function startExploit()
+        {
+           if(vulnPlugin2.valid){
+           
+			 vulnPlugin2.InitRed(31337,0x31333331);
+             var a=vulnPlugin2.CallRed()
+             alert(a);
+			 vulnPlugin2.FreeRed();
+			 
+             vulnPlugin2.InitString("001122"); //Why no crash?
+			 
+             //////
+			 alert('Ready?');
+			 var a=vulnPlugin2.CallRed(); //Fire!
+			 
+			alert(a);
+			 
+            } else {
+                alert("Plugin is not working :(");
+            }
+        }
+	
+</script>
+<body onload="">
+<div id="log"></div>
+<object id="vulnPlugin2" type="application/x-exploitme" width="300" height="300">
+</object>
+
+<br />
+    
+<a href="#" onclick="javascript:startExploit()">Click me!</a> <br />
+
+</body>
+</html>

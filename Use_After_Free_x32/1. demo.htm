@@ -1,0 +1,50 @@
+<!--
+    Auto-generated test-site
+-->
+<html>
+<head>
+<title>Plugin DEMO</title>
+</head>
+    <script type="text/javascript">
+		
+			   
+        function startExploit()
+        {
+            if(vulnPlugin2.valid){
+               
+			 vulnPlugin2.InitRed(1,0x31333331);    // INIT Object RED
+             vulnPlugin2.InitGreen(2,0x31333331); //INIT Object GREEN
+             vulnPlugin2.InitString("Hello World"); 
+             vulnPlugin2.InitOther(3,0x31333331);
+
+			 
+			 var red =  vulnPlugin2.CallRed();        // CALL RED  (1)
+             alert(red);
+             
+             var green =  vulnPlugin2.CallGreen(); // CALL RED  (2)
+             alert(green);
+             
+			 var string = vulnPlugin2.testString; // CALL string  ('Hello World')
+             alert(string);
+             
+			 vulnPlugin2.FreeRed();
+             vulnPlugin2.FreeGreen();
+             
+
+            } else {
+                alert("Plugin is not working :(");
+            }
+        }
+	
+</script>
+<body onload="">
+<div id="log"></div>
+<object id="vulnPlugin2" type="application/x-exploitme" width="300" height="300">
+</object>
+
+<br />
+    
+<a href="#" onclick="javascript:startExploit()">Click me!</a> <br />
+
+</body>
+</html>
